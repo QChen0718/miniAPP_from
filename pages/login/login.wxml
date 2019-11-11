@@ -29,10 +29,10 @@
   </view>
   <view class="login">
     <view>
-      <image src="/images/wxlogin.png" style="width=70px;height:98px;"></image>
+      <image src="../images/login/weChart@3x.png" ></image>
     </view>
     <view>
-      <image src="/images/qqlogin.png" style="width=70px;height:98px;"></image>
+      <image src="/pages/images/login/weChart@3x.png"></image>
     </view>
   </view>
 </view>

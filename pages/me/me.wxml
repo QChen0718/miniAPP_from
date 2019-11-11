@@ -1,2 +1,19 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="content">
+  <image class="corver" src="../images/me/mineInvite@3x.png" style="width:100%;height:150px;"></image>
+  <import src="../template/template"/>
+  <view class="nav">
+    <template is="navmenu" data="{{array}}"></template>
+  </view>
+  <view class="hr"></view>
+  <view class="listitem">
+    <block wx:for="{{listData}}">
+      <view class="item2" bindtap="itemClick">
+        <icon type="success" size="23"></icon>
+        <text class="text">{{item}}</text>
+        <image src="../images/me/Arrow@3x.png" style="width:10px;height:10px"></image>
+    </view>
+    <view class="line"></view>
+    </block>
+  </view>
+</view>

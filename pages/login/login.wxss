@@ -46,5 +46,8 @@
 }
 .login view{
   margin: 0 auto;
-  background-color: red;
+}
+.login image{
+  width: 70px;
+  height: 70px;
 }
