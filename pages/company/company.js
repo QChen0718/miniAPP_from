@@ -39,8 +39,8 @@ Page({
       // 延迟1秒跳转到登录页面
       duration:1000,
       success:function(){
-        wx.navigateTo({
-          url: '../login/login',
+        wx.navigateBack({
+          
         })
       }
     })

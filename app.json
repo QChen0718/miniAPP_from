@@ -2,13 +2,56 @@
   "pages": [
     "pages/login/login",
     "pages/mobile/mobile",
-    "pages/company/company"
+    "pages/company/company",
+    "pages/home/home",
+    "pages/product/product",
+    "pages/work/work",
+    "pages/found/found",
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "京东登录",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#999999",
+    "selectedColor": "#CC1004",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "pages/images/tab/list.png",
+        "selectedIconPath": "pages/images/tab/list_active.png"
+      },
+      {
+        "pagePath": "pages/product/product",
+        "text": "产品",
+        "iconPath": "pages/images/tab/recommend.png",
+        "selectedIconPath": "pages/images/tab/recommend_active.png"
+      },
+      {
+        "pagePath": "pages/work/work",
+        "text": "工作台",
+        "iconPath": "pages/images/tab/recommend.png",
+        "selectedIconPath": "pages/images/tab/recommend_active.png"
+      },
+      {
+        "pagePath": "pages/found/found",
+        "text": "发现",
+        "iconPath": "pages/images/tab/type.png",
+        "selectedIconPath": "pages/images/tab/type_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "pages/images/tab/user.png",
+        "selectedIconPath": "pages/images/tab/user_active.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
