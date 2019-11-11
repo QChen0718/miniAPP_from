@@ -1,2 +1,67 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="content">
+  <view>
+    <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="bindChange">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image class="slide-image" src="{{item}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  
+  <view class="tongji">
+    <view class="leiji">
+      <view>
+        <image src="../images/tab/list.png" style="width:15px;height:15px;"></image>
+    </view>
+      <view>累计成交金额723.8亿</view>
+    </view>
+    <view class="line"></view>
+    <view class="leiji">
+      <view>
+        <image src="../images/tab/list.png" style="width:15px;height:15px;"></image>
+      </view>
+      <view>服务理财顾问23.1万</view>
+    </view>
+  </view>
+  <view class="hr"></view>
+  <view class="nav">
+    <block wx:for="{{array}}">
+      <view class="item" bindtap="itemClick">
+        <view class="img">
+          <image src="{{item.img}}" style="width:40px;height:40px;border-radius: 20px;"></image>
+        </view>
+        <view>{{item.title}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="new">热销产品</view>
+
+  <view class="list">
+    <block>
+      <view class="list_item">
+        <view class="view1">
+          <view class="tag">集合信托</view>
+          <view>央企信托-青州(第12期)</view>
+          <view class="tuijian">推荐</view>
+        </view>
+        <view class="view2">
+          <view class="subview">
+            <view class="title">9.5%</view>
+            <view class="desc">预期收益</view>
+          </view>
+          <view class="subview">
+            <view class="title">24个月</view>
+            <view class="desc">投资期限</view>
+          </view>
+          <view class="subview">
+            <view class="title">认证可见</view>
+            <view class="desc">服务费率</view>
+          </view>
+        </view>
+        <view class="item_hr"></view>
+      </view>
+    </block>
+  </view>
+</view>
