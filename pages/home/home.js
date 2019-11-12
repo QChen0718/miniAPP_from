@@ -10,6 +10,7 @@ Page({
       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
       'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
     ],
+    tags:['在售','类固定资产','基础设施类','征信类'],
     dots:true, //显示指示面板
     color:"gray", //默认指示显示颜色
     active_color:"white", //选中指示显示颜色
@@ -69,7 +70,8 @@ Page({
   //   console.log(e.detail);
   // },
   itemClick:function(e){
-    console.log(e);
+    console.log(e.currentTarget.id);
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

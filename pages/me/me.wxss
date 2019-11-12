@@ -20,13 +20,21 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding-top: 15px;
-  height: 40px;
+  line-height: 45px;
+  height: 45px;
+  /* justify-content: center; */
+  vertical-align: center;/* 垂直居中 */
+  align-items:center; /* 子view垂直居中 */
 }
-.item2 image{
+.img_left{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.img_right{
   position: absolute;
-  right: 30px;
+  right: 25px;
 }
+
 .text{
   height: 100%;
 }

@@ -6,7 +6,7 @@ Page({
    */
   data: {
     array: [],
-    listData:['我的工作室','理财师认证','实名认证','我的服务经理','设置','关于壹财富','推荐朋友','帮助与反馈','用户协议','客服电话']
+    listData: [{ 'img': '../images/me/User_home@3x.png', 'name': '我的工作室' }, { 'img': '../images/me/User_register@3x.png', 'name': '理财师认证' }, { 'img': '../images/me/User_cyz@3x.png', 'name': '实名认证' }, { 'img': '../images/me/User_smrz@3x.png', 'name': '我的服务经理' }, { 'img': '../images/me/User_set@3x.png', 'name': '设置' }, { 'img': '../images/me/User_about@3x.png', 'name': '关于壹财富' }, { 'img': '../images/me/User_home@3x.png', 'name': '推荐朋友' }, { 'img': '../images/me/feedback@3x.png', 'name': '帮助与反馈' }, { 'img': '../images/me/MyOrderIcon@3x.png', 'name': '用户协议' }, { 'img': '../images/me/custormPhone@3x.png', 'name': '客服电话' }]
   },
   itemClick:function(e){
     console.log(e);

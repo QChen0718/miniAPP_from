@@ -1,1 +1,38 @@
 /* pages/product/product.wxss */
+.scrollview{
+  width: 100%;
+  
+}
+.pageview{
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  vertical-align: center;
+  align-items: center;
+}
+.select{
+  height: 26px;
+  line-height: 26px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 13px;
+  background-color: red;
+  color: white;
+  font-size: 15px;
+  margin-left: 10px;
+  /* margin-bottom: 10px; */
+}
+.normal{
+  height: 26px;
+  line-height: 26px;
+  color: #666;
+  font-size: 15px;
+  margin-left: 10px;
+  /* margin-bottom: 10px; */
+}
+.hr{
+  background-color: lightgray;
+  height: 1px;
+  width: 100%;
+  margin-top: 10px;
+}

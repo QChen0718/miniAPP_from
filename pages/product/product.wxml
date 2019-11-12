@@ -1,2 +1,21 @@
 <!--pages/product/product.wxml-->
-<text>pages/product/product.wxml</text>
+<!--  white-space
+  normal: 正常无变化(默认处理方式.文本自动处理换行.假如抵达容器边界内容会转到下一行)
+  pre: 保持HTML源代码的空格与换行,等同与pre标签
+  nowrap: 强制文本在一行,除非遇到br换行标签
+  pre-wrap: 同pre属性,但是遇到超出容器范围的时候会自动换行
+  pre-line: 同pre属性,但是遇到连续空格会被看作一个空格
+  inherit: 继承
+-->
+<view class="content">
+  <scroll-view  scroll-x="true" style="width:100%;white-space: nowrap;">
+    <view class="pageview">
+      <view wx:for="{{pagetitles}}" class="{{currentTab==index?'select':'normal'}}" bindtap="pageClick" id="{{index}}">{{item}}</view>
+    </view>
+  </scroll-view>
+  <view class="hr"></view>
+  <swiper>
+    <swiper-item class="swiper_item">
+    </swiper-item>
+  </swiper>
+</view>

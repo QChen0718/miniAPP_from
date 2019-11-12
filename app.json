@@ -7,7 +7,8 @@
     "pages/product/product",
     "pages/work/work",
     "pages/found/found",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "dark",

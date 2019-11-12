@@ -9,9 +9,9 @@
   <view class="listitem">
     <block wx:for="{{listData}}">
       <view class="item2" bindtap="itemClick">
-        <icon type="success" size="23"></icon>
-        <text class="text">{{item}}</text>
-        <image src="../images/me/Arrow@3x.png" style="width:10px;height:10px"></image>
+        <image class="img_left" src="{{item.img}}" style="width:18px;height:18px;"></image> 
+        <text class="text">{{item.name}}</text>
+        <image class="img_right" src="../images/me/Arrow@3x.png" style="width:10px;height:15px"></image>
     </view>
     <view class="line"></view>
     </block>
