@@ -13,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "京东登录",
+    "navigationBarTitleText": "登录",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

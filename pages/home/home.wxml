@@ -1,15 +1,28 @@
 <!--pages/home/home.wxml-->
 <view class="content">
   <view>
+
     <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="bindChange">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
           <image class="slide-image" src="{{item}}"></image>
         </swiper-item>
       </block>
+      
     </swiper>
+    <view class="controls">
+      <view class="shaixuan" bindtap="filterClick">
+        <image src="../images/home/filtrate@3x.png" class="sx_img"></image>
+      </view>
+      <view class="input" bindtap="jumpSearchPage">
+        <image src="../images/home/searchBtnBackImg@3x.png" class="input_img"></image>
+        <view class="input_title">支持更多关键词搜索</view>
+      </view>
+      <view class="message" bindtap="messageClick">
+        <image src="../images/home/messageIconHome@3x.png" class="sx_img"></image>
+      </view>
+    </view>
   </view>
-  
   <view class="tongji">
     <view class="leiji">
       <image src="../images/home/icon_crown@3x.png" style="width:15px;height:15px;margin-right:5px;"></image>

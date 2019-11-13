@@ -7,6 +7,62 @@
   width: 100%;
   height: 100%;
 }
+.controls{
+  /* 固定定位 */
+  position: fixed; 
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  top: 0px;
+  flex-direction: row;
+}
+.shaixuan{
+  margin-left: 15px;
+  width: 10%;
+  /* 内容居中 无flex的时候使用 */
+  text-align: center;
+}
+.sx_img{
+  width: 20px;
+  height: 28px;
+}
+.sx_title{
+  height: 20px;
+  margin-top: 3px;
+  font-size: 12px;
+  color: white;
+}
+.input{
+  height: 30px;
+  background-color: lightgray;
+  border-radius: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  align-items: center;
+  vertical-align: center;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  /* 内容居中，有flex的时候使用 */
+  justify-content: center;
+}
+.input_title{
+  /* height: 100%; */
+  font-size: 14px;
+  color: gray;
+  float: left;
+  padding-left: 10px
+}
+.input_img{
+  width: 15px;
+  height: 15px;
+}
+.message{
+  margin-right: 15px;
+  width: 10%;
+  text-align: center;
+}
 .tongji{
   display: flex;
   flex-direction: row;

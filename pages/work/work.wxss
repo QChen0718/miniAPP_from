@@ -1,1 +1,119 @@
 /* pages/work/work.wxss */
+.header_bg{
+  width: 86%;
+  height: 120px;
+  margin-left: 7%;
+  margin-right: 7%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  box-shadow:0px 2px 5px 5px lightgray;
+  margin-top: 5px;
+}
+.header_iconbg{
+  width: 80px;
+  height: 100%;
+  vertical-align: center;
+  text-align: center;
+  margin-left: 10px;
+}
+.header_icon{
+  width: 60px;
+  height: 60px;
+  margin-top: 15px;
+}
+.header_name{
+  height: 20px;
+  color: black;
+  /* font-weight: bold; */
+  font-size: 16px;
+  margin-top: 5px;
+}
+.header_infobg{
+  margin-left: 10px;
+  height: 100%;
+  vertical-align: center;
+  align-items: center;
+  flex: 1;
+}
+.header_rz{
+  border-radius: 3px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+  width: 45px;
+  line-height: 20px;
+  margin-top: 20px;
+  text-align: center;
+  
+}
+.header_info{
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  vertical-align: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.header_city{
+  margin-left: 5px;
+  line-height: 20px;
+  color: #666;
+  font-size: 15px;
+}
+.header_line{
+  width: 0.5px;
+  height: 15px;
+  background-color: lightgray;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.header_year{
+  color: lightgray;
+  font-size: 15px;
+}
+.header_desc{
+  height: 20px;
+  color: lightgray;
+  font-size: 15px;
+  margin-top: 15px;
+}
+.numview{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.num_item{
+  width: 33%;
+  height: 100%;
+  text-align: center;
+  vertical-align: center;
+}
+.num{
+  margin-top: 15px;
+  font-size: 16px;
+}
+.num_name{
+  margin-top: 3px;
+  font-size: 12px;
+  color: lightgray;
+  margin-bottom: 10px;
+}
+.hr{
+  height: 10px;
+  background-color: lightgray;
+}
+.gonggaoview{
+  margin-top: 8px;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+.gonggaotitle{
+  margin-left: 20px;
+}
+

@@ -33,35 +33,35 @@ Page({
   initData: function () {
     var array = [];
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_new@3x.png';
     object1.title = '最新';
     array[0] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_hot@3x.png';
     object1.title = '精选';
     array[1] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_Trust@3x.png';
     object1.title = '集合信托';
     array[2] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_Capital@3x.png';
     object1.title = '集合资管';
     array[3] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_Private@3x.png';
     object1.title = '债权基金';
     array[4] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_PEVC@3x.png';
     object1.title = '证券基金';
     array[5] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_Order@3x.png';
     object1.title = '一键报单';
     array[6] = object1;
     var object1 = new Object();
-    object1.img = 'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg';
+    object1.img = '../images/home/Home_Service@3x.png';
     object1.title = '我的客服';
     array[7] = object1;
     return array
@@ -74,6 +74,16 @@ Page({
     console.log(e.currentTarget.id);
 
   },
+  filterClick:function(e){
+    console.log('筛选按钮被点击');
+  },
+  jumpSearchPage:function(e){
+    console.log('跳转搜索页面');
+  },
+  messageClick:function(e){
+    console.log('消息按钮被点击');
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
