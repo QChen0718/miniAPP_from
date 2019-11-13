@@ -12,12 +12,12 @@
   
   <view class="tongji">
     <view class="leiji">
-      <image src="../images/tab/list.png" style="width:15px;height:15px;"></image>
+      <image src="../images/home/icon_crown@3x.png" style="width:15px;height:15px;margin-right:5px;"></image>
       <view>累计成交金额723.8亿</view>
     </view>
     <view class="line"></view>
     <view class="leiji">
-      <image src="../images/tab/list.png" style="width:15px;height:15px;"></image>
+      <image src="../images/home/icon_crown@3x.png" style="width:15px;height:15px;margin-right:5px;"></image>
       <view>服务理财顾问23.1万</view>
     </view>
   </view>
@@ -26,6 +26,15 @@
   <view class="nav">
     <template is="navmenu" data="{{array}}"/>
   </view>
+  <view class="new">热点专题</view>
+  <scroll-view scroll-x="true" class="rdscrollview">
+    <block wx:for="{{tops}}">
+      <view class="top_item">
+        <image src="{{item.imgurl}}" class="redian_img"></image>
+        <view class="redian_title">{{item.title}}</view>
+      </view>
+    </block>
+  </scroll-view>
   <view class="new">热销产品</view>
 
   <view class="list">

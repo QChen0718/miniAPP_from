@@ -8,7 +8,7 @@
   inherit: 继承
 -->
 <view class="content">
-  <scroll-view  scroll-x="true" style="width:100%;white-space: nowrap;">
+  <scroll-view  scroll-x="true" class="scrollview">
     <view class="pageview">
       <view wx:for="{{pagetitles}}" class="{{currentTab==index?'select':'normal'}}" bindtap="pageClick" id="{{index}}">{{item}}</view>
     </view>

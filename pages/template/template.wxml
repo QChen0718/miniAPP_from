@@ -1,9 +1,9 @@
 <template name="navmenu">
   <block wx:for="{{array}}">
       <view class="item" bindtap="itemClick" id="{{index}}">
-        <!-- <view class="img"> -->
+        <view class="img">
           <image src="{{item.img}}" style="width:40px;height:40px;border-radius: 20px;"></image>
-        <!-- </view> -->
+        </view>
         <view>{{item.title}}</view>
       </view>
     </block>
