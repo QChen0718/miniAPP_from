@@ -11,6 +11,11 @@
   font-size: 12px;
   text-align: center;
 }
+.item_img{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
 .hr{
   height: 10px;
   width: 100%;

@@ -106,14 +106,70 @@
   background-color: lightgray;
 }
 .gonggaoview{
-  margin-top: 8px;
   width: 100%;
   height: 70px;
   background-color: white;
   display: flex;
   flex-direction: row;
+  /* vertical-align: center; */
+  align-items: center;
 }
 .gonggaotitle{
   margin-left: 20px;
 }
+.navlist{
+  width: 100%;
+  height: 160px;
+  text-align: center;
+  margin-top: 20px;
+}
+.item{
+  width: 25%;
+  height: 80px;
+  float: left;
+}
+.item_title{
+  color: gray;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.item_img{
+  width: 25px;
+  height: 30px;
+}
+.menuview{
+  width: 100%;
+  height: 120px;
+}
+.titleview{
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  vertical-align: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.redhr{
+  background-color: red;
+  width: 3px;
+  height: 12px;
+  margin-left: 15px;
+  margin-right: 5px;
+  
 
+}
+.itemsview{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 80px;
+  margin-top: 20px;
+}
+.subitem{
+  width: 25%;
+}
+.subtitle{
+  color: lightgray;
+  font-size: 12px;
+  margin-top: 10px;
+}
