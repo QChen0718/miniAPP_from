@@ -1,39 +1,13 @@
-// pages/product/product.js
+// pages/search/search.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pagetitles:['最新','精选','集合信托','集合资管','债权基金','证券基金','国内保险'],
-    currentTab:0
-  },
-  loadData:function(e){
-    wx.request({
-      url: 'https://m.maoyan.com/movie/list.json',
-      data:{
-        type:'hot',
-        offset:0,
-        limit:1000
-      },
-      method:'GET',
-      success:function(res){
-        console.log(res);
-      },
-      fail:function(){
 
-      },
-      complete:function(){
-        
-      }
-    })
   },
-  pageClick:function(e){
-    var id = e.currentTarget.id;
-    this.setData({
-      currentTab:id
-    });
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

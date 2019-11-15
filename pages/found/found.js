@@ -48,10 +48,10 @@ Page({
   // 加载电影列表数据
   loadMovies:function(){
     var page = this;
-    var key = util.getDataKey();
+    // var key = util.getDataKey();
     wx.request({
-      url: 'https://api.douban.com/v2/movie/in_theaters?apikey='+key,
-      method:GET,
+      url: 'https://api.douban.com/v2/movie/in_theaters?apikey=',
+      method:'GET',
       header:{
         "Content-Type":"json"
       },

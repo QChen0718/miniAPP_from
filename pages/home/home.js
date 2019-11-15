@@ -5,13 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls:[
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
-    tags:['在售','类固定资产','基础设施类','征信类'],
-    tops: [{ 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20190603\/2738c1d7e4a74a8f8aa9204e4851e8f4.jpg', 'title': '一文读懂资管计划' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180906\/8895b93f8f2c43c2863871a269c5e478.jpg', 'title': '经济是如何运行的' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180418\/85252a9305394049bd7cac08ff01df32.jpg', 'title': '一图带你轻松看懂金交所' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180329\/67947b54691d40a79c503adf243558ac.jpg', 'title': '私募股权投资' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180323\/3d40239302344ca2a9308ce2a09c2118.jpg', 'title': '人工智能四大优势' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180315\/bf123ef488c34258a41160a51c4476e8.jpg', 'title': '理财师如何为客户配置资产' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180306\/754a7d4541344160b49366b727db15de.jpg', 'title': '私募投资避雷指南' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180227\/cba4720c0a7a4e2c9ba508319b0be6af.jpg', 'title': '人工智能' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180201\/0f2158154bd34cb5a9e0d65d905a209c.jpg', 'title': '刘鹤世界经济论坛致辞' }, { 'imgurl': 'https://rescdn.xiaohu.in/Upload\/News\/20180129\/742ca390743447c89bbd1e66fcef1dbd.jpg', 'title': '非标私募何去何从' }],
     dots:true, //显示指示面板
     color:"gray", //默认指示显示颜色
     active_color:"white", //选中指示显示颜色
@@ -20,7 +13,10 @@ Page({
     current:0, //当前所在的
     interval:2000, //自动切换时间间隔
     duration:800, //动画时长
-    array:[]
+    array:[],
+    productArray:[],
+    bannerArray:[],
+    hottopArray:[]
   },
   
   /**
@@ -29,6 +25,99 @@ Page({
   onLoad: function (options) {
     var array = this.initData();
     this.setData({ array: array });
+    this.loadProductData();
+    this.loadBannerData();
+    this.loadHotTopData();
+  },
+  //首页获取banner信息接口
+  loadBannerData:function(){
+    var page = this;
+    wx.request({
+      url: 'https://test-api4app.1caifu.com/api/Site/BannerGetList',
+      method:'POST',
+      header:{
+        "Accept-Version": "2.1.0",
+        "Content-Type": "application\/json"
+        },
+      data:{
+        sign: "631E2C04CC84EDAF7B695C2B205E1A7A",
+        channel: "1",
+        timeStamp: "2019-11-14T17:04:12+0800",
+        apiVersion: "2.1.0",
+        appKey: "ycfiosiplqs93zpd98qjhayrm",
+        version: "6.2.0",
+        type: 13
+      },
+      success:function(res){
+        console.log('---->',res)
+        var dataArray = res.data.data;
+        page.setData({
+          bannerArray: dataArray
+        });
+      }
+    })
+  },
+  //首页获取热点专题接口
+  loadHotTopData:function(){
+    var page = this;
+    wx.request({
+      url: 'https://test-api4app.1caifu.com/api/Site/GetHotTopicNews',
+      method:'POST',
+      header:{
+        "Accept-Version": "1.0.0",
+        "Content-Type": "application\/json"
+      },
+      data:{
+        "userMobile": "15921488001",
+        "pageSize": 10,
+        "apiVersion": "1.0.0",
+        "version": "6.2.0",
+        "pageIndex": 1,
+        "userId": "23087",
+        "sign": "BC18D0A1502097D0B94E9CDD36D21499",
+        "channel": "1",
+        "appKey": "ycfiosiplqs93zpd98qjhayrm",
+        "timeStamp": "2019-11-14T17:04:12+0800"
+      },
+      success: function (res) {
+        console.log(res.data.data);
+        var dataArray = res.data.data;
+        page.setData({
+          hottopArray:dataArray
+        });
+      }
+    })
+  },
+  //首页获取产品列表接口
+  loadProductData:function(){
+    var page = this;
+    wx.request({
+      url: 'https://test-api4app.1caifu.com/api/Product/getAPPIndexList',
+      method:'POST',
+      header:{
+        'Content-Type':'application\/json',
+        'Accept-Version':'1.0.0'
+      },
+      data:{
+        timeStamp: "2019-11-14T17:04:12+0800",
+        userId: "23087",
+        sign: "BC18D0A1502097D0B94E9CDD36D21499",
+        apiVersion: "1.0.0",
+        version: "6.2.0",
+        appKey: "ycfiosiplqs93zpd98qjhayrm",
+        pageSize: 10,
+        channel: "1",
+        userMobile: "15921488001",
+        type: 100
+      },
+      success: function (res) {
+        console.log(res.data.data);
+        var dataArray = res.data.data;
+        page.setData({
+          productArray:dataArray
+        });
+      }
+    })
   },
   initData: function () {
     var array = [];
@@ -79,6 +168,9 @@ Page({
   },
   jumpSearchPage:function(e){
     console.log('跳转搜索页面');
+    wx.navigateTo({
+      url: '../search/search',
+    })
   },
   messageClick:function(e){
     console.log('消息按钮被点击');

@@ -3,9 +3,9 @@
   <view>
 
     <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="bindChange">
-      <block wx:for="{{imgUrls}}">
+      <block wx:for="{{bannerArray}}">
         <swiper-item>
-          <image class="slide-image" src="{{item}}"></image>
+          <image class="slide-image" src="{{'https://rescdn.xiaohu.in/'+item.pic}}"></image>
         </swiper-item>
       </block>
       
@@ -41,9 +41,9 @@
   </view>
   <view class="new">热点专题</view>
   <scroll-view scroll-x="true" class="rdscrollview">
-    <block wx:for="{{tops}}">
+    <block wx:for="{{hottopArray}}">
       <view class="top_item">
-        <image src="{{item.imgurl}}" class="redian_img"></image>
+        <image src="{{'https://rescdn.xiaohu.in/'+item.image}}" class="redian_img"></image>
         <view class="redian_title">{{item.title}}</view>
       </view>
     </block>
@@ -51,31 +51,33 @@
   <view class="new">热销产品</view>
 
   <view class="list">
-    <block wx:for="{{array}}">
+    <block wx:for="{{productArray}}">
       <view class="list_item">
         <view class="view1">
           <view class="type">集合信托</view>
-          <view>央企信托-青州(第12期)</view>
+          <view>{{item.sTitle}}</view>
           <view class="tuijian">推荐</view>
         </view>
         <view class="view2">
-          <block wx:for="{{tags}}">
-            <view class="tag">{{item}}</view>
+           <view class="zaishou">在售</view>
+          <block wx:for="{{item.tagsArray}}">
+            <view class="tag" wx:if="{{index<3}}">{{item.name}}</view>
           </block>
         </view>
         <view class="view3">
           <view class="subview">
-            <view class="title">9.5%</view>
+            <view class="title">{{item.bestEarningRate}}</view>
             <view class="desc">预期收益</view>
           </view>
           <view class="subview">
-            <view class="title">24个月</view>
+            <view class="title">{{item.qiXianTitle}}</view>
             <view class="desc">投资期限</view>
           </view>
           <view class="subview">
-            <view class="title">认证可见</view>
+            <view class="title2">{{item.bestPrice}}</view>
             <view class="desc">服务费率</view>
           </view>
+          <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/>
         </view>
         <view class="item_hr"></view>
       </view>

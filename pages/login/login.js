@@ -37,7 +37,12 @@ Page({
   login:function(e){
     wx.switchTab({
       url: '../home/home',
-    })
+    }),
+      wx.showToast({
+        title: '登录成功',
+        icon: 'success',
+        duration: 2000
+      })
     console.log("登录按钮被点击");
   },
   loginphone:function(e){
