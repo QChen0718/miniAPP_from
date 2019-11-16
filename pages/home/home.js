@@ -175,7 +175,15 @@ Page({
   messageClick:function(e){
     console.log('消息按钮被点击');
   },
-
+  hotClick:function(e){
+    
+    //跳转到专题详情页面
+    var hoturl = e.currentTarget.dataset.hottop.url;
+    console.log(hoturl);
+    wx.navigateTo({
+      url: '../hottopDetail/hottopDetail?url=' + hoturl
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

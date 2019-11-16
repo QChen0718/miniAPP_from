@@ -10,7 +10,8 @@
     "pages/me/me",
     "pages/test/test",
     "pages/search/search",
-    "pages/set/set"
+    "pages/set/set",
+    "pages/hottopDetail/hottopDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -18,6 +18,8 @@
   flex-direction: row;
   align-items: center;
   vertical-align: center;
+  /* z-index的值越大优先级越高，但是需要注意的是需要设置position才有效果 */
+  z-index: 2;
 }
 .shaixuan{
   margin-left: 15px;
@@ -84,14 +86,17 @@
 }
 
 .line{
-  border: 1px solid #cccccc;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 1px;
+  background-color: #cccccc;
 }
 .hr{
-  border: 1px solid #cccccc;
+  /* border: 1px solid #cccccc; */
   opacity: 0.2;
   width: 100%;
+  height: 1px;
+  background-color: #cccccc;
   margin: 0 auto;
 }
 .nav{

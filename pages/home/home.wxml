@@ -1,8 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="content">
   <view>
-
-    <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="bindChange">
+    <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
       <block wx:for="{{bannerArray}}">
         <swiper-item>
           <image class="slide-image" src="{{'https://rescdn.xiaohu.in/'+item.pic}}"></image>
@@ -42,7 +41,8 @@
   <view class="new">热点专题</view>
   <scroll-view scroll-x="true" class="rdscrollview">
     <block wx:for="{{hottopArray}}">
-      <view class="top_item">
+    <!-- data-top data 是绑定数据的 top是自定义的字段名称 -->
+      <view class="top_item" bindtap="hotClick" data-hotTop="{{item}}">
         <image src="{{'https://rescdn.xiaohu.in/'+item.image}}" class="redian_img"></image>
         <view class="redian_title">{{item.title}}</view>
       </view>

@@ -1,0 +1,4 @@
+<!--pages/hottopDetail/hottopDetail.wxml-->
+<!-- 显示h5页面 -->
+<text>详情页面</text>
+<web-view src="https://www.baidu.com" class="webview"></web-view>
