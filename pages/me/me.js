@@ -10,6 +10,12 @@ Page({
   },
   itemClick:function(e){
     console.log(e);
+    if(e.target.id == 4){
+      //跳转到设置页面
+      wx.navigateTo({
+        url: '../set/set',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

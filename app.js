@@ -5,11 +5,13 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log('登录')
+        //跳转到首页
+        this.checkLogin()
       }
     })
     // 获取用户信息
@@ -32,8 +34,23 @@ App({
         }
       }
     })
+   
+
   },
+  //校验是显示登录页面，还是显示首页
+  checkLogin:function(){
+   var user = wx.getStorageSync('user');
+   console.log(user);
+   if(user != ""){
+     console.log('方法执行');
+     wx.switchTab({
+       url: 'pages/home/home',
+     })
+   }
+  },
+
   globalData: {
     userInfo: null
   }
+  
 })

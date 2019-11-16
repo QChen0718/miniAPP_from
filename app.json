@@ -9,12 +9,13 @@
     "pages/found/found",
     "pages/me/me",
     "pages/test/test",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/set/set"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "登录",
+    "navigationBarTitleText": "壹财富小程序",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

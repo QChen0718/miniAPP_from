@@ -28,7 +28,7 @@
     <button class="btn" disabled="{{disabled}}" type="{{btnstate}}" form-type="submit">注册</button>
     <view class="xieyi">
       <text class="agree">注册即视为同意</text>
-      <text class="opinion">《京东用户注册协议》</text>
+      <text class="opinion">《壹财富用户注册协议》</text>
     </view>
   </view>
 

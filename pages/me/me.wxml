@@ -8,7 +8,7 @@
   <view class="hr"></view>
   <view class="listitem">
     <block wx:for="{{listData}}">
-      <view class="item2" bindtap="itemClick">
+      <view class="item2" bindtap="itemClick" id="{{index}}">
         <image class="img_left" src="{{item.img}}" style="width:18px;height:18px;"></image> 
         <text class="text">{{item.name}}</text>
         <image class="img_right" src="../images/me/Arrow@3x.png" style="width:10px;height:15px"></image>
