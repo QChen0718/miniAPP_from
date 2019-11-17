@@ -1,4 +1,5 @@
 // pages/product/product.js
+const API = require('../../api.js')
 Page({
 
   /**
@@ -24,7 +25,7 @@ Page({
 
       },
       complete:function(){
-        
+
       }
     })
   },
@@ -38,9 +39,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.loadProductData();
   },
-
+  loadProductData: function(e) {
+    wx.request({
+      url: API.newProductList,
+      method:'POST',
+      header:{
+        "Accept-Version": "1.0.0",
+        "Content-Type": "application\/json"
+      },
+      data:{
+        "pageIndex": 1,
+        "pageSize": 10,
+        "version": "6.2.0",
+        "productTypeId": "8",
+        "channel": "1",
+        "appKey": "ycfiosiplqs93zpd98qjhayrm",
+        "userMobile": "18311055781",
+        "timeStamp": "2019-11-16T21:30:54+0800",
+        "userId": "1825829",
+        "sign": "AA4F114CF4BB89D07C3F6C1FAB4E45F6",
+        "apiVersion": "1.0.0"
+      },
+      success:function(res){
+        console.log(res);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

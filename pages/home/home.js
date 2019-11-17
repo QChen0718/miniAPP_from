@@ -1,4 +1,5 @@
 // pages/home/home.js
+const API = require('../../api.js')
 Page({
 
   /**
@@ -33,7 +34,7 @@ Page({
   loadBannerData:function(){
     var page = this;
     wx.request({
-      url: 'https://test-api4app.1caifu.com/api/Site/BannerGetList',
+      url: API.homebannerData,
       method:'POST',
       header:{
         "Accept-Version": "2.1.0",
@@ -44,7 +45,7 @@ Page({
         channel: "1",
         timeStamp: "2019-11-14T17:04:12+0800",
         apiVersion: "2.1.0",
-        appKey: "ycfiosiplqs93zpd98qjhayrm",
+        appKey: API.appKey,
         version: "6.2.0",
         type: 13
       },
@@ -61,7 +62,7 @@ Page({
   loadHotTopData:function(){
     var page = this;
     wx.request({
-      url: 'https://test-api4app.1caifu.com/api/Site/GetHotTopicNews',
+      url: API.homehottopData,
       method:'POST',
       header:{
         "Accept-Version": "1.0.0",
@@ -76,7 +77,7 @@ Page({
         "userId": "23087",
         "sign": "BC18D0A1502097D0B94E9CDD36D21499",
         "channel": "1",
-        "appKey": "ycfiosiplqs93zpd98qjhayrm",
+        "appKey": API.appKey,
         "timeStamp": "2019-11-14T17:04:12+0800"
       },
       success: function (res) {
@@ -91,8 +92,9 @@ Page({
   //首页获取产品列表接口
   loadProductData:function(){
     var page = this;
+    
     wx.request({
-      url: 'https://test-api4app.1caifu.com/api/Product/getAPPIndexList',
+      url: API.appProductList,
       method:'POST',
       header:{
         'Content-Type':'application\/json',
@@ -104,7 +106,7 @@ Page({
         sign: "BC18D0A1502097D0B94E9CDD36D21499",
         apiVersion: "1.0.0",
         version: "6.2.0",
-        appKey: "ycfiosiplqs93zpd98qjhayrm",
+        appKey: API.appKey,
         pageSize: 10,
         channel: "1",
         userMobile: "15921488001",

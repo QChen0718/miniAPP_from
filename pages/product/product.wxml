@@ -15,7 +15,40 @@
   </scroll-view>
   <view class="hr"></view>
   <swiper>
-    <swiper-item class="swiper_item">
+    <swiper-item class="swiper_item" style="">
+      <view class="list">
+    <block wx:for="{{productArray}}">
+      <view class="list_item">
+        <view class="view1">
+          <view class="type">集合信托</view>
+          <view>{{item.sTitle}}</view>
+          <view class="tuijian">推荐</view>
+        </view>
+        <view class="view2">
+           <view class="zaishou">在售</view>
+          <block wx:for="{{item.tagsArray}}">
+            <view class="tag" wx:if="{{index<3}}">{{item.name}}</view>
+          </block>
+        </view>
+        <view class="view3">
+          <view class="subview">
+            <view class="title">{{item.bestEarningRate}}</view>
+            <view class="desc">预期收益</view>
+          </view>
+          <view class="subview">
+            <view class="title">{{item.qiXianTitle}}</view>
+            <view class="desc">投资期限</view>
+          </view>
+          <view class="subview">
+            <view class="title2">{{item.bestPrice}}</view>
+            <view class="desc">服务费率</view>
+          </view>
+          <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/>
+        </view>
+        <view class="item_hr"></view>
+      </view>
+    </block>
+  </view>
     </swiper-item>
   </swiper>
 </view>
