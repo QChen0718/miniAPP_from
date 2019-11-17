@@ -1,5 +1,5 @@
 <template name="navmenu">
-  <block wx:for="{{array}}">
+  <block wx:for="{{array}}" wx:key="{{index}}">
       <view class="item" bindtap="itemClick" id="{{index}}">
         <view class="img">
           <image src="{{item.img}}" class="item_img"></image>

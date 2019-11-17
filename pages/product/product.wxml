@@ -17,7 +17,7 @@
   <swiper>
     <swiper-item class="swiper_item" style="">
       <view class="list">
-    <block wx:for="{{productArray}}">
+    <block wx:for="{{productArray}}" wx:key="{{index}}">
       <view class="list_item">
         <view class="view1">
           <view class="type">集合信托</view>

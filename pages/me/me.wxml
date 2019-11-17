@@ -7,7 +7,7 @@
   </view>
   <view class="hr"></view>
   <view class="listitem">
-    <block wx:for="{{listData}}">
+    <block wx:for="{{listData}}" wx:key="{{index}}">
       <view class="item2" bindtap="itemClick" id="{{index}}">
         <image class="img_left" src="{{item.img}}" style="width:18px;height:18px;"></image> 
         <text class="text">{{item.name}}</text>

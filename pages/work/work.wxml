@@ -46,7 +46,7 @@
         <view>{{item.title}}</view>
       </view>
       <view class="itemsview">
-        <block wx:for="{{item.array}}">
+        <block wx:for="{{item.array}}" wx:key="{{index}}">
           <view class="subitem">
             <image src="{{item.img}}" style="width:35px;height:35px;"></image>
             <view class="subtitle">{{item.title}}</view>

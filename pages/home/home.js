@@ -1,5 +1,6 @@
 // pages/home/home.js
-const API = require('../../api.js')
+const API = require('../../utils/api.js')
+const HTTP = require('../../utils/http.js')
 Page({
 
   /**
@@ -33,25 +34,22 @@ Page({
   //首页获取banner信息接口
   loadBannerData:function(){
     var page = this;
-    wx.request({
+    var data = {
+      sign: "631E2C04CC84EDAF7B695C2B205E1A7A",
+      channel: "1",
+      timeStamp: "2019-11-14T17:04:12+0800",
+      apiVersion: "2.1.0",
+      appKey: API.appKey,
+      version: "6.2.0",
+      type: 13
+    };
+    HTTP.httprequest({
       url: API.homebannerData,
       method:'POST',
-      header:{
-        "Accept-Version": "2.1.0",
-        "Content-Type": "application\/json"
-        },
-      data:{
-        sign: "631E2C04CC84EDAF7B695C2B205E1A7A",
-        channel: "1",
-        timeStamp: "2019-11-14T17:04:12+0800",
-        apiVersion: "2.1.0",
-        appKey: API.appKey,
-        version: "6.2.0",
-        type: 13
-      },
-      success:function(res){
-        console.log('---->',res)
-        var dataArray = res.data.data;
+      apiversion: "2.1.0",
+      param:data,
+      success:function(data){
+        var dataArray = data.data;
         page.setData({
           bannerArray: dataArray
         });
@@ -61,30 +59,29 @@ Page({
   //首页获取热点专题接口
   loadHotTopData:function(){
     var page = this;
-    wx.request({
+    //参数
+    var data = {
+      "userMobile": "15921488001",
+      "pageSize": 10,
+      "apiVersion": "1.0.0",
+      "version": "6.2.0",
+      "pageIndex": 1,
+      "userId": "23087",
+      "sign": "BC18D0A1502097D0B94E9CDD36D21499",
+      "channel": "1",
+      "appKey": API.appKey,
+      "timeStamp": "2019-11-14T17:04:12+0800"
+    };
+    HTTP.httprequest({
       url: API.homehottopData,
-      method:'POST',
-      header:{
-        "Accept-Version": "1.0.0",
-        "Content-Type": "application\/json"
-      },
-      data:{
-        "userMobile": "15921488001",
-        "pageSize": 10,
-        "apiVersion": "1.0.0",
-        "version": "6.2.0",
-        "pageIndex": 1,
-        "userId": "23087",
-        "sign": "BC18D0A1502097D0B94E9CDD36D21499",
-        "channel": "1",
-        "appKey": API.appKey,
-        "timeStamp": "2019-11-14T17:04:12+0800"
-      },
-      success: function (res) {
-        console.log(res.data.data);
-        var dataArray = res.data.data;
+      method: 'POST',
+      apiversion: "1.0.0",
+      param: data,
+      success: function (data) {
+        console.log(data);
+        var dataArray = data.data;
         page.setData({
-          hottopArray:dataArray
+          hottopArray: dataArray
         });
       }
     })
@@ -92,31 +89,27 @@ Page({
   //首页获取产品列表接口
   loadProductData:function(){
     var page = this;
-    
-    wx.request({
+    var data = {
+      timeStamp: "2019-11-14T17:04:12+0800",
+      userId: "23087",
+      sign: "BC18D0A1502097D0B94E9CDD36D21499",
+      apiVersion: "1.0.0",
+      version: "6.2.0",
+      appKey: API.appKey,
+      pageSize: 10,
+      channel: "1",
+      userMobile: "15921488001",
+      type: 100
+    };
+    HTTP.httprequest({
       url: API.appProductList,
-      method:'POST',
-      header:{
-        'Content-Type':'application\/json',
-        'Accept-Version':'1.0.0'
-      },
-      data:{
-        timeStamp: "2019-11-14T17:04:12+0800",
-        userId: "23087",
-        sign: "BC18D0A1502097D0B94E9CDD36D21499",
-        apiVersion: "1.0.0",
-        version: "6.2.0",
-        appKey: API.appKey,
-        pageSize: 10,
-        channel: "1",
-        userMobile: "15921488001",
-        type: 100
-      },
-      success: function (res) {
-        console.log(res.data.data);
-        var dataArray = res.data.data;
+      method: 'POST',
+      apiversion: "1.0.0",
+      param: data,
+      success: function (data) {
+        var dataArray = data.data;
         page.setData({
-          productArray:dataArray
+          productArray: dataArray
         });
       }
     })

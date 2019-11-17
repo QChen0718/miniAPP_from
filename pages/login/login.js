@@ -1,4 +1,6 @@
 // pages/login/login.js
+const HTTP = require('../../utils/http.js')
+const API = require('../../utils/api.js')
 Page({
 
   /**
@@ -41,23 +43,24 @@ Page({
   //调用登录接口
   loginRequest:function(e){
     console.log(e)
-    wx.request({
-      url: 'https://test-api4app.1caifu.com/api/User/userlogin',
-      method:'POST',
-      data:{
-        "apiVersion": "1.0.0",
-        "timeStamp": "2019-11-15T17:00:32+0800",
-        "loginType": "0",
-        "version": "6.2.0",
-        "channel": "1",
-        "userName": e.loginName,
-        "password": "e10adc3949ba59abbe56e057f20f883e",
-        "appKey": "ycfiosiplqs93zpd98qjhayrm",
-        "sign": "A07FB1648112AC97A1E2DD89146B08AA"
-      },
-      success:function(resc){
-        console.log(resc);
-        if (resc.data.code == 0){
+    var data = {
+      "apiVersion": "1.0.0",
+      "timeStamp": "2019-11-15T17:00:32+0800",
+      "loginType": "0",
+      "version": "6.2.0",
+      "channel": "1",
+      "userName": e.loginName,
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "appKey": "ycfiosiplqs93zpd98qjhayrm",
+      "sign": "A07FB1648112AC97A1E2DD89146B08AA"
+    };
+    HTTP.httprequest({
+      url:API.passwordLogin,
+      method: 'POST',
+      param:data,
+      apiversion: "1.0.0",
+      success:function(data){
+        if (data.code == 0) {
           wx.switchTab({
             url: '../home/home',
           });
@@ -70,13 +73,13 @@ Page({
           wx.setStorage({
             key: 'user',
             data: resc.data.data,
-            success:function(e){
+            success: function (e) {
               console.log(e);
             }
           })
-        }else{
+        } else {
           wx.showToast({
-            title: resc.data.errMsg,
+            title: data.errMsg,
             icon: 'none',
             duration: 2000
           });

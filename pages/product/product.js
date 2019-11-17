@@ -1,5 +1,5 @@
 // pages/product/product.js
-const API = require('../../api.js')
+const API = require('../../utils/api.js')
 Page({
 
   /**
@@ -8,26 +8,6 @@ Page({
   data: {
     pagetitles:['最新','精选','集合信托','集合资管','债权基金','证券基金','国内保险'],
     currentTab:0
-  },
-  loadData:function(e){
-    wx.request({
-      url: 'https://m.maoyan.com/movie/list.json',
-      data:{
-        type:'hot',
-        offset:0,
-        limit:1000
-      },
-      method:'GET',
-      success:function(res){
-        console.log(res);
-      },
-      fail:function(){
-
-      },
-      complete:function(){
-
-      }
-    })
   },
   pageClick:function(e){
     var id = e.currentTarget.id;

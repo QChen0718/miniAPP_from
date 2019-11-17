@@ -2,7 +2,7 @@
 <view class="content">
   <view>
     <swiper class="swiper" indicator-dots="{{dots}}" indicator-color="{{color}}" indicator-active-color="{{active_color}}" autoplay="{{autoplay}}" current="{{current}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-      <block wx:for="{{bannerArray}}">
+      <block wx:for="{{bannerArray}}" wx:key="{{index}}">
         <swiper-item>
           <image class="slide-image" src="{{'https://rescdn.xiaohu.in/'+item.pic}}"></image>
         </swiper-item>
@@ -40,7 +40,7 @@
   </view>
   <view class="new">热点专题</view>
   <scroll-view scroll-x="true" class="rdscrollview">
-    <block wx:for="{{hottopArray}}">
+    <block wx:for="{{hottopArray}}" wx:key="{{index}}">
     <!-- data-top data 是绑定数据的 top是自定义的字段名称 -->
       <view class="top_item" bindtap="hotClick" data-hotTop="{{item}}">
         <image src="{{'https://rescdn.xiaohu.in/'+item.image}}" class="redian_img"></image>
@@ -51,7 +51,7 @@
   <view class="new">热销产品</view>
 
   <view class="list">
-    <block wx:for="{{productArray}}">
+    <block wx:for="{{productArray}}" wx:key="{{index}}">
       <view class="list_item">
         <view class="view1">
           <view class="type">集合信托</view>
@@ -60,7 +60,7 @@
         </view>
         <view class="view2">
            <view class="zaishou">在售</view>
-          <block wx:for="{{item.tagsArray}}">
+          <block wx:for="{{item.tagsArray}}" wx:key="{{index}}">
             <view class="tag" wx:if="{{index<3}}">{{item.name}}</view>
           </block>
         </view>
