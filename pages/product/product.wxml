@@ -10,45 +10,57 @@
 <view class="content">
   <scroll-view  scroll-x="true" class="scrollview">
     <view class="pageview">
-      <view wx:for="{{pagetitles}}" class="{{currentTab==index?'select':'normal'}}" bindtap="pageClick" id="{{index}}">{{item}}</view>
+      <view wx:for="{{pagetitles}}" class="{{currentTab==index?'select':'normal'}}" bindtap="pageClick" id="{{index}}" wx:key="{{index}}">{{item}}</view>
     </view>
   </scroll-view>
   <view class="hr"></view>
-  <swiper>
-    <swiper-item class="swiper_item" style="">
-      <view class="list">
-    <block wx:for="{{productArray}}" wx:key="{{index}}">
-      <view class="list_item">
-        <view class="view1">
-          <view class="type">集合信托</view>
-          <view>{{item.sTitle}}</view>
-          <view class="tuijian">推荐</view>
-        </view>
-        <view class="view2">
-           <view class="zaishou">在售</view>
-          <block wx:for="{{item.tagsArray}}">
-            <view class="tag" wx:if="{{index<3}}">{{item.name}}</view>
-          </block>
-        </view>
-        <view class="view3">
-          <view class="subview">
-            <view class="title">{{item.bestEarningRate}}</view>
-            <view class="desc">预期收益</view>
+  <!-- swiper 下面紧跟着的 必须是swiper-item -->
+  <swiper bindchange="bindchange" current="{{currentTab}}" style="height:{{winHeight}}px;width:100%;">
+      <block wx:for="{{pagetitles}}" wx:key="{{index}}">
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height:100%;">
+        <view wx:if="{{newproductData.length>0}}">
+          <block wx:for="{{newproductData}}" wx:key="{{index}}">
+            <view class="list_item">
+              <view class="view1">
+              <view class="type">集合信托</view>
+              <view>{{item.sTitle}}</view>
+              <view class="tuijian">推荐</view>
+            </view>
+          <view class="view2">
+            <view class="zaishou">在售</view>
+            <block wx:for="{{item.tagsArray}}" wx:key="{{index}}">
+              <view class="tag" wx:if="{{index<3}}">{{item.name}}</view>
+            </block>
           </view>
-          <view class="subview">
-            <view class="title">{{item.qiXianTitle}}</view>
-            <view class="desc">投资期限</view>
+          <view class="view3">
+            <view class="subview">
+              <view class="title">{{item.bestEarningRate}}</view>
+              <view class="desc">预期收益</view>
+            </view>
+            <view class="subview">
+              <view class="title">{{item.qiXianTitle}}</view>
+              <view class="desc">投资期限</view>
+            </view>
+            <view class="subview">
+              <view class="title2">{{item.bestPrice}}</view>
+              <view class="desc">服务费率</view>
+            </view>
+            <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/>
           </view>
-          <view class="subview">
-            <view class="title2">{{item.bestPrice}}</view>
-            <view class="desc">服务费率</view>
-          </view>
-          <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/>
+          <view class="item_hr"></view>
         </view>
-        <view class="item_hr"></view>
-      </view>
+      </block>
+    </view>
+    <!-- 展示无内容时的提示信息 -->
+    <view wx:if="{{newproductData.length==0}}" class="nodata" style="height:100%">
+      <text>
+        暂无数据
+      </text>
+    </view>
+     </scroll-view>
+  </swiper-item>
+   
     </block>
-  </view>
-    </swiper-item>
   </swiper>
 </view>

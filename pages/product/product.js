@@ -1,5 +1,6 @@
 // pages/product/product.js
 const API = require('../../utils/api.js')
+const HTTP = require('../../utils/http.js')
 Page({
 
   /**
@@ -7,7 +8,9 @@ Page({
    */
   data: {
     pagetitles:['最新','精选','集合信托','集合资管','债权基金','证券基金','国内保险'],
-    currentTab:0
+    currentTab:0,
+    newproductData:[],
+    winHeight:0,
   },
   pageClick:function(e){
     var id = e.currentTarget.id;
@@ -19,31 +22,95 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadProductData();
-  },
-  loadProductData: function(e) {
-    wx.request({
-      url: API.newProductList,
+    var self = this;
+    self.getWindowHeight();
+
+    self.loadProductData({
+      url:API.newProductList,
+      version:"1.0.0",
       method:'POST',
-      header:{
-        "Accept-Version": "1.0.0",
-        "Content-Type": "application\/json"
+      productTypeId:"8"
+    });
+  },
+  //获取窗口高度的方法
+  getWindowHeight:function(e){
+    var self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log('窗口高度', res.windowHeight);
+        self.setData({
+          // 41 是title的高度
+          winHeight: res.windowHeight - 41
+        });
       },
-      data:{
+      fail: function (res) {
+        console.log('---->', res);
+      }
+    })
+  },
+  // 轮播图滑动后会触发该方法
+  bindchange:function(e){
+    console.log('当前索引位置',e);
+    let that = this;
+    var currenturl;
+    var productTypeid;
+    var version;
+    that.setData({
+      currentTab:e.detail.current
+    });
+    if(e.detail.current==0){
+      //最新
+      currenturl = API.newProductList;
+      productTypeid = "8";
+      version = "1.0.0";
+    }else if(e.detail.current == 1){
+      //精选
+      currenturl = API.hotProductList;
+      productTypeid = "9";
+      version = "1.0.0";
+    }else if(e.detail.current == 5){
+      //证券基金
+      currenturl = API.securityFundList;
+      version = "2.0.0";
+      productTypeid = "4"
+    }
+    else{
+      currenturl = API.productList;
+      version = "2.0.0";
+      productTypeid = e.detail.current-1;
+    }
+    that.loadProductData({
+      url: currenturl,
+      method:'POST',
+      version:'1.0.0',
+      productTypeId: productTypeid
+    })
+  },
+  //加载最新产品列表数据
+  loadProductData: function(e) {
+    let that = this;
+    HTTP.httprequest({
+      url:e.url,
+      param: {
         "pageIndex": 1,
         "pageSize": 10,
         "version": "6.2.0",
-        "productTypeId": "8",
+        "productTypeId": e.productTypeId,
         "channel": "1",
         "appKey": "ycfiosiplqs93zpd98qjhayrm",
         "userMobile": "18311055781",
         "timeStamp": "2019-11-16T21:30:54+0800",
         "userId": "1825829",
         "sign": "AA4F114CF4BB89D07C3F6C1FAB4E45F6",
-        "apiVersion": "1.0.0"
+        "apiVersion": e.version
       },
-      success:function(res){
-        console.log(res);
+      apiversion:e.version,
+      method:e.method,
+      success:function(data){
+        console.log(data.data);
+        that.setData({
+          newproductData: data.data
+        });
       }
     })
   },

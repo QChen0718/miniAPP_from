@@ -40,7 +40,7 @@
   </view>
   <view class="hr"></view>
   <view class="menuview">  
-    <block wx:for="{{menus}}">
+    <block wx:for="{{menus}}" wx:key="{{index}}">
       <view class="titleview">
         <view class="redhr"></view>
         <view>{{item.title}}</view>

@@ -150,7 +150,7 @@
 }
 .list{
   width: 100%;
-  height: 800x;
+  height: 800px;
 }
 .list_item{
   width: 100%;

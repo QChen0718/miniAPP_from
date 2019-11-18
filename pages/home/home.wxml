@@ -51,8 +51,8 @@
   <view class="new">热销产品</view>
 
   <view class="list">
-    <block wx:for="{{productArray}}" wx:key="{{index}}">
-      <view class="list_item">
+    <block wx:for="{{productArray}}" wx:key="{{index}}" >
+      <view class="list_item" bindtap="itemClick" id="{{index}}">
         <view class="view1">
           <view class="type">集合信托</view>
           <view>{{item.sTitle}}</view>
