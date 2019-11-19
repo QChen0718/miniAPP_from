@@ -16,9 +16,17 @@
   <view class="hr"></view>
   <!-- swiper 下面紧跟着的 必须是swiper-item -->
   <swiper bindchange="bindchange" current="{{currentTab}}" style="height:{{winHeight}}px;width:100%;">
-      <block wx:for="{{pagetitles}}" wx:key="{{index}}">
+      <block wx:for="{{categoryData}}" wx:key="{{index}}">
       <swiper-item>
-        <scroll-view scroll-y="true" style="height:100%;">
+      <scroll requesting="{{item.requesting}}"
+				end="{{item.end}}"
+				empty-show="{{item.emptyShow}}"
+				list-count="{{item.listData.length}}"
+				has-top="{{false}}"
+				refresh-size="{{80}}"
+				bind:refresh="refresh" 
+				bind:more="more">
+        <!-- <scroll-view scroll-y="true" style="height:100%;" bindscrolltolower="bindscrolltolower"> -->
         <view wx:if="{{newproductData.length>0}}">
           <block wx:for="{{newproductData}}" wx:key="{{index}}">
             <view class="list_item">
@@ -58,7 +66,8 @@
         暂无数据
       </text>
     </view>
-     </scroll-view>
+     <!-- </scroll-view> -->
+     </scroll>
   </swiper-item>
    
     </block>

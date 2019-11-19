@@ -1,6 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "scroll": "../../components/scroll/index"
+  },
   "navigationBarTitleText": "产品",
-  "enablePullDownRefresh": true,
   "backgroundColor": "#f0145a"
 }

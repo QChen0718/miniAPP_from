@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
-	"appid": "touristappid",
+	"appid": "wxbe6868b3ade8ad09",
 	"projectname": "form",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -57,6 +57,13 @@
 					"id": -1,
 					"name": "pages/test/test",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/swipe-list/index",
+					"pathName": "pages/swipe-list/index",
 					"scene": null
 				}
 			]

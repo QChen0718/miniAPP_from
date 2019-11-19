@@ -1,6 +1,7 @@
 // pages/product/product.js
 const API = require('../../utils/api.js')
 const HTTP = require('../../utils/http.js')
+let pageStart = 0;
 Page({
   
   /**
@@ -11,6 +12,64 @@ Page({
     currentTab:0,
     newproductData:[],
     winHeight:0,
+    categoryData: [
+      {
+        name: "最新",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "精选",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "集合信托",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "集合资管",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "债权基金",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "证券基金",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      },
+      {
+        name: "国内保险",
+        requesting: false,
+        end: false,
+        emptyShow: false,
+        page: pageStart,
+        listData: []
+      }
+    ]
   },
   pageClick:function(e){
     var id = e.currentTarget.id;
@@ -89,6 +148,12 @@ Page({
   //加载最新产品列表数据
   loadProductData: function(e) {
     let that = this;
+    wx.showNavigationBarLoading();
+    let end = that.data.categoryData[0].end = true;
+    let pageData = this.getCurrentData();
+    //开始加载，指示器开始显示加载
+    pageData.requesting = true;
+    this.setCurrentData(pageData);
     HTTP.httprequest({
       url:e.url,
       param: {
@@ -106,51 +171,23 @@ Page({
       },
       apiversion:e.version,
       method:e.method,
+      
       success:function(data){
         console.log(data.data);
         that.setData({
-          newproductData: data.data
+          newproductData: data.data,
         });
+        pageData.listData = that.data.newproductData;
+        pageData.end = false;
+        pageData.requesting = false;
+        that.setCurrentData(pageData);
         wx.hideNavigationBarLoading();
-        wx.stopPullDownRefresh();
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    //在标题栏中显示加载
+  //刷新
+  refresh:function(){
     console.log('-----------', this.data.currentTab);
-    wx.showNavigationBarLoading()
     let that = this;
     var currenturl;
     var productTypeid;
@@ -186,6 +223,57 @@ Page({
       version: '1.0.0',
       productTypeId: productTypeid
     })
+  },
+  //加载更多
+  more:function(){
+
+  },
+  //更新页面数据
+  setCurrentData: function (pageData) {
+    let categoryData = this.data.categoryData
+    categoryData[this.data.currentTab] = pageData
+    this.setData({
+      categoryData:categoryData
+    })
+  },
+  //获取当前页面的数据
+  getCurrentData:function(){
+    return this.data.categoryData[this.data.currentTab]
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    //在标题栏中显示加载
+    
   },
 
   /**
