@@ -41,7 +41,9 @@ App({
   checkLogin:function(){
    var user = wx.getStorageSync('user');
    console.log(user);
-   if(user != ""){
+   //Object.keys()这个方法通过判断它的长度来知道它是否为空
+  //  判断对象是否为空
+   if(Object.keys(user).length!=0){
      console.log('方法执行');
      wx.switchTab({
        url: 'pages/home/home',

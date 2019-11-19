@@ -4,7 +4,7 @@
     <view class="account">
     <view class="title">账号</view>
     <view class="num">
-      <input bindinput="accountInput" placeholder="用户名/邮箱/手机号" placeholder-style="color:#999999;" name="loginName"></input>
+      <input bindinput="accountInput" placeholder="用户名/邮箱/手机号" placeholder-style="color:#999999;" name="loginName" value="18311055781"></input>
     </view>
     </view>
     <view class="hr"></view>

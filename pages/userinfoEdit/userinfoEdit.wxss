@@ -1,0 +1,25 @@
+/* pages/userinfoEdit/userinfoEdit.wxss */
+.photo{
+  width: 80px;
+  height: 100px;
+  background-color: red;
+}
+.name,.sex{
+  display: flex;
+  flex-direction: row;
+  height: 46px;
+  line-height: 46px;
+}
+.title{
+  width: 25%;
+  color: lightgray;
+  
+}
+.subcontent{
+  width: 75%;
+}
+.hr{
+  height: 1px;
+  background-color: lightgray;
+  width: 100%;
+}

@@ -70,9 +70,10 @@ Page({
             duration: 2000
           });
           //本地存储用户信息
+          console.log(data);
           wx.setStorage({
             key: 'user',
-            data: resc.data.data,
+            data: data.data,
             success: function (e) {
               console.log(e);
             }

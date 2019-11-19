@@ -1,0 +1,22 @@
+<!--pages/userinfoEdit/userinfoEdit.wxml-->
+<view class="content">
+  <form report-submit="">
+    <view>
+      <image src="{{tempFilePaths}}" bindtap="selectphoto" class="photo" name="touxiang"></image>
+      <view>参照尺寸：750x750px</view>
+    </view>
+    <view class="name">
+      <view class="title">姓名</view>
+      <view class="subcontent">5781会员</view>
+    </view>
+    <view class="hr"></view>
+    <view class="sex">
+      <view class="title">性别</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="subcontent">
+        <view>{{array[index]}}</view>
+      </picker>
+    </view>
+    <view class="hr"></view>
+  </form>
+  
+</view>

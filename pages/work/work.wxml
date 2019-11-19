@@ -1,6 +1,6 @@
 <!--pages/work/work.wxml-->
 <view class="content">
-  <view class="header_bg">
+  <view class="header_bg" bindtap="jumpUserinfo">
     <view class="header_iconbg">
       <image src="../images/work/User_touxiang_03@3x.png" class="header_icon"></image>
       <view class="header_name">5781会员</view>
@@ -17,7 +17,7 @@
     </view>
   </view>
   <view class="numview">
-    <block wx:for="{{nums}}">
+    <block wx:for="{{nums}}" wx:key="{{index}}">
       <view class="num_item">
         <view class="num">{{item.shuzi}}</view>
         <view class="num_name">{{item.name}}</view>

@@ -11,7 +11,8 @@
     "pages/test/test",
     "pages/search/search",
     "pages/set/set",
-    "pages/hottopDetail/hottopDetail"
+    "pages/hottopDetail/hottopDetail",
+    "pages/userinfoEdit/userinfoEdit"
   ],
   "window": {
     "backgroundTextStyle": "dark",

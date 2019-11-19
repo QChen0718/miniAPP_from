@@ -2,7 +2,7 @@
 const API = require('../../utils/api.js')
 const HTTP = require('../../utils/http.js')
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -111,6 +111,8 @@ Page({
         that.setData({
           newproductData: data.data
         });
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -146,7 +148,44 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    //在标题栏中显示加载
+    console.log('-----------', this.data.currentTab);
+    wx.showNavigationBarLoading()
+    let that = this;
+    var currenturl;
+    var productTypeid;
+    var version;
+    //获取data里面的变量值
+    if (this.data.currentTab == 0) {
+      //最新
+      console.log('最新');
+      currenturl = API.newProductList;
+      productTypeid = "8";
+      version = "1.0.0";
+    } else if (this.data.currentTab == 1) {
+      //精选
+      console.log('精选');
+      currenturl = API.hotProductList;
+      productTypeid = "9";
+      version = "1.0.0";
+    } else if (this.data.currentTab == 5) {
+      //证券基金
+      console.log('证券基金');
+      currenturl = API.securityFundList;
+      version = "2.0.0";
+      productTypeid = "4"
+    }
+    else {
+      currenturl = API.productList;
+      version = "2.0.0";
+      productTypeid = this.data.currentTab - 1;
+    }
+    that.loadProductData({
+      url: currenturl,
+      method: 'POST',
+      version: '1.0.0',
+      productTypeId: productTypeid
+    })
   },
 
   /**

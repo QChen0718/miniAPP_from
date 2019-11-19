@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "产品"
+  "navigationBarTitleText": "产品",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f0145a"
 }
