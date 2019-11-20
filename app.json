@@ -12,7 +12,9 @@
     "pages/search/search",
     "pages/set/set",
     "pages/hottopDetail/hottopDetail",
-    "pages/userinfoEdit/userinfoEdit"
+    "pages/userinfoEdit/userinfoEdit",
+    "pages/sift/sift",
+    "components/filter/filter"
   ],
   "window": {
     "backgroundTextStyle": "dark",

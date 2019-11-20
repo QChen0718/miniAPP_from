@@ -119,11 +119,15 @@
 .new{
   height: 24px;
   width: 100%;
-  padding-left: 20px;
   background-color: lightgray;
   line-height: 24px;
+  
+}
+.subtext{
   color: gray;
   font-size: 14px;
+  line-height: 24px;
+  margin-left: 20px;
 }
 .rdscrollview{
   /* 强制在一行显示 */

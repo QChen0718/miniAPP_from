@@ -64,6 +64,13 @@
 					"id": -1,
 					"name": "pages/swipe-list/index",
 					"pathName": "pages/swipe-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sift/sift",
+					"pathName": "pages/sift/sift",
 					"scene": null
 				}
 			]

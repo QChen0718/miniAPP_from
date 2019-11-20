@@ -38,7 +38,9 @@
   <view class="nav">
     <template is="navmenu" data="{{array}}"/>
   </view>
-  <view class="new">热点专题</view>
+  <view class="new">
+    <text class="subtext">热点专题</text>
+  </view>
   <scroll-view scroll-x="true" class="rdscrollview">
     <block wx:for="{{hottopArray}}" wx:key="{{index}}">
     <!-- data-top data 是绑定数据的 top是自定义的字段名称 -->
@@ -48,7 +50,9 @@
       </view>
     </block>
   </scroll-view>
-  <view class="new">热销产品</view>
+  <view class="new">
+    <text class="subtext">热销产品</text>
+  </view>
 
   <view class="list">
     <block wx:for="{{productArray}}" wx:key="{{index}}" >
@@ -56,7 +60,7 @@
         <view class="view1">
           <view class="type">集合信托</view>
           <view>{{item.sTitle}}</view>
-          <view class="tuijian">推荐</view>
+          <view class="tuijian" hidden="true">推荐</view>
         </view>
         <view class="view2">
            <view class="zaishou">在售</view>
@@ -77,7 +81,7 @@
             <view class="title2">{{item.bestPrice}}</view>
             <view class="desc">服务费率</view>
           </view>
-          <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/>
+          <!-- <progress show-info="true" percent="50" stroke-width="2"  activeColor="blue" class="progress"/> -->
         </view>
         <view class="item_hr"></view>
       </view>

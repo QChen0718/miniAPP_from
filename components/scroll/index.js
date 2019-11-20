@@ -24,7 +24,7 @@ Component({
 		// 空状态的图片
 		emptyUrl: {
 			type: String,
-			value: "/assets/image/empty/empty.png"
+			value: "/pages/images/product/empty.png"
 		},
 		// 空状态的文字提示
 		emptyText: {

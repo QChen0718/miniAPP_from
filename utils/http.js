@@ -15,6 +15,7 @@ function httprequest(model) {
       wx.showToast({
         title: res,
       })
+      model.fail(res.data)
     }
   })
 }

@@ -2,6 +2,7 @@
 const API = require('../../utils/api.js')
 const HTTP = require('../../utils/http.js')
 let pageStart = 0;
+let pageSize = 10;
 Page({
   
   /**
@@ -12,9 +13,11 @@ Page({
     currentTab:0,
     newproductData:[],
     winHeight:0,
+    currenturl:API.newProductList,
+    productTypeid:"8",
+    version: "1.0.0",
     categoryData: [
       {
-        name: "最新",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -22,7 +25,6 @@ Page({
         listData: []
       },
       {
-        name: "精选",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -30,7 +32,6 @@ Page({
         listData: []
       },
       {
-        name: "集合信托",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -38,7 +39,6 @@ Page({
         listData: []
       },
       {
-        name: "集合资管",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -46,7 +46,6 @@ Page({
         listData: []
       },
       {
-        name: "债权基金",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -54,7 +53,6 @@ Page({
         listData: []
       },
       {
-        name: "证券基金",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -62,7 +60,6 @@ Page({
         listData: []
       },
       {
-        name: "国内保险",
         requesting: false,
         end: false,
         emptyShow: false,
@@ -85,10 +82,10 @@ Page({
     self.getWindowHeight();
 
     self.loadProductData({
-      url:API.newProductList,
-      version:"1.0.0",
+      url:self.data.currenturl,
+      version:self.data.version,
       method:'POST',
-      productTypeId:"8"
+      productTypeId:self.data.productTypeid
     });
   },
   //获取窗口高度的方法
@@ -110,38 +107,42 @@ Page({
   // 轮播图滑动后会触发该方法
   bindchange:function(e){
     console.log('当前索引位置',e);
+    this.setData({
+      currentTab: e.detail.current
+    });
+    this.getList('refresh',e.detail.current);
+  },
+  //
+  getList(type,current){
     let that = this;
     var currenturl;
     var productTypeid;
     var version;
-    that.setData({
-      currentTab:e.detail.current
-    });
-    if(e.detail.current==0){
+    if (current == 0) {
       //最新
       currenturl = API.newProductList;
       productTypeid = "8";
       version = "1.0.0";
-    }else if(e.detail.current == 1){
+    } else if (current == 1) {
       //精选
       currenturl = API.hotProductList;
       productTypeid = "9";
       version = "1.0.0";
-    }else if(e.detail.current == 5){
+    } else if (current == 5) {
       //证券基金
       currenturl = API.securityFundList;
       version = "2.0.0";
       productTypeid = "4"
     }
-    else{
+    else {
       currenturl = API.productList;
-      version = "2.0.0";
-      productTypeid = e.detail.current-1;
+      version = "1.0.0";
+      productTypeid = current - 1;
     }
     that.loadProductData({
       url: currenturl,
-      method:'POST',
-      version:'1.0.0',
+      method: 'POST',
+      version: version,
       productTypeId: productTypeid
     })
   },
@@ -158,7 +159,7 @@ Page({
       url:e.url,
       param: {
         "pageIndex": 1,
-        "pageSize": 10,
+        "pageSize": pageSize,
         "version": "6.2.0",
         "productTypeId": e.productTypeId,
         "channel": "1",
@@ -180,49 +181,23 @@ Page({
         pageData.listData = that.data.newproductData;
         pageData.end = false;
         pageData.requesting = false;
+        console.log('产品列表个数',pageData.listData.length);
+        if(pageData.listData.length === 0){
+          pageData.emptyShow=true;
+          
+        }
         that.setCurrentData(pageData);
         wx.hideNavigationBarLoading();
+      },
+      fail:function(data){
+        pageData.requesting = false;
       }
     })
   },
   //刷新
   refresh:function(){
     console.log('-----------', this.data.currentTab);
-    let that = this;
-    var currenturl;
-    var productTypeid;
-    var version;
-    //获取data里面的变量值
-    if (this.data.currentTab == 0) {
-      //最新
-      console.log('最新');
-      currenturl = API.newProductList;
-      productTypeid = "8";
-      version = "1.0.0";
-    } else if (this.data.currentTab == 1) {
-      //精选
-      console.log('精选');
-      currenturl = API.hotProductList;
-      productTypeid = "9";
-      version = "1.0.0";
-    } else if (this.data.currentTab == 5) {
-      //证券基金
-      console.log('证券基金');
-      currenturl = API.securityFundList;
-      version = "2.0.0";
-      productTypeid = "4"
-    }
-    else {
-      currenturl = API.productList;
-      version = "2.0.0";
-      productTypeid = this.data.currentTab - 1;
-    }
-    that.loadProductData({
-      url: currenturl,
-      method: 'POST',
-      version: '1.0.0',
-      productTypeId: productTypeid
-    })
+    this.getList('refresh', this.data.currentTab);
   },
   //加载更多
   more:function(){
