@@ -2,7 +2,7 @@
 var yongtuid= [{ 'title': '全部', 'id': '1', 'isSelect': false, 'section': '1' }, { 'title': '经济实惠型', 'id': '2', 'isSelect': false, 'section': '1' }, { 'title': '家用学习型', 'id': '3', 'isSelect': false, 'section': '1' }, { 'title': '豪华发烧型', 'id': '4', 'isSelect': false, 'section': '1' }, { 'title': '疯狂游戏型', 'id': '5', 'isSelect': false, 'section': '1' }, { 'title': '商务办公型', 'id': '6', 'isSelect': false, 'section': '1' }, { 'title': '经济实惠型', 'id': '7', 'isSelect': false, 'section': '1' }, { 'title': '商务办公型', 'id': '8', 'isSelect': false, 'section': '1' }];
 
 var priceId= [{ 'title': '全部', 'id': '9', 'isSelect': false, 'section': '2' }, { 'title': '经济实惠型', 'id': '10', 'isSelect': false, 'section': '2' }, { 'title': '家用学习型', 'id': '11', 'isSelect': false, 'section': '2' }, { 'title': '豪华发烧型', 'id': '12', 'isSelect': false, 'section': '2' }, { 'title': '疯狂游戏型', 'id': '13', 'isSelect': false, 'section': '2' }, { 'title': '商务办公型', 'id': '14', 'isSelect': false, 'section': '2' }, { 'title': '经济实惠型', 'id': '15', 'isSelect': false, 'section': '2' }, { 'title': '商务办公型', 'id': '16', 'isSelect': false, 'section': '2' }];
-
+var sumSelectArray = [];
 Page({
   data:{
     isRuleTrue:false,
@@ -65,7 +65,7 @@ Page({
   success: function () {
     var ytselectArray;
     var priceselectArray;
-    var sumSelectArray=[];
+    
     for(var i=0; i< this.data.filterData.length;i++)
     {
       for(var j=0;j<this.data.filterData[i].array.length;j++){
@@ -84,7 +84,30 @@ Page({
   },
   //重置
   result: function() {
-    
+    // 清空数组
+   
+      for (var i = 0; i < sumSelectArray.length; i++) {
+        if(sumSelectArray[i].section == 1){
+          for (var j = 0; j < yongtuid.length; j++) {
+            if (sumSelectArray[i].id == yongtuid[j].id) {
+              yongtuid[j].isSelect = false;
+            }
+          }
+        }else{
+          for (var j = 0; j < priceId.length; j++) {
+            if (sumSelectArray[i].id == priceId[j].id) {
+              priceId[j].isSelect = false;
+            }
+          }
+        }
+     }
+     //更新数据源
+    this.setData({
+      // 给对象属性赋值的方法
+      'filterData[0].array': yongtuid,
+      'filterData[1].array':priceId
+    });
+    sumSelectArray=[];
   },
   hiddenFilter:function(){
     this.data.animation.translateX(0).step()
