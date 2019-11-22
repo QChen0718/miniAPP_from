@@ -61,20 +61,24 @@ Page({
 
     })
   },
+  //获取选中结束后的选中item
+  getSelectSucceck: function(){
+    for (var i = 0; i < this.data.filterData.length; i++) {
+      for (var j = 0; j < this.data.filterData[i].array.length; j++) {
+        if (this.data.filterData[i].array[j].isSelect) {
+          sumSelectArray.push(this.data.filterData[i].array[j])
+        }
+      }
+    }
+  },
   //完成
   success: function () {
     var ytselectArray;
     var priceselectArray;
     
-    for(var i=0; i< this.data.filterData.length;i++)
-    {
-      for(var j=0;j<this.data.filterData[i].array.length;j++){
-        if (this.data.filterData[i].array[j].isSelect){
-          sumSelectArray.push(this.data.filterData[i].array[j])
-        }
-      }
-    }
+    this.getSelectSucceck();
     console.log('选中的用途',sumSelectArray);
+    //动画，从右侧滑动显示筛选视图
     this.data.animation.translateX(0).step()
     this.setData({ 
       ani: this.data.animation.export(),
@@ -85,28 +89,29 @@ Page({
   //重置
   result: function() {
     // 清空数组
-   
-      for (var i = 0; i < sumSelectArray.length; i++) {
-        if(sumSelectArray[i].section == 1){
-          for (var j = 0; j < yongtuid.length; j++) {
-            if (sumSelectArray[i].id == yongtuid[j].id) {
-              yongtuid[j].isSelect = false;
-            }
-          }
-        }else{
-          for (var j = 0; j < priceId.length; j++) {
-            if (sumSelectArray[i].id == priceId[j].id) {
-              priceId[j].isSelect = false;
-            }
+    this.getSelectSucceck();
+    for (var i = 0; i < sumSelectArray.length; i++) {
+      if(sumSelectArray[i].section == 1){
+        for (var j = 0; j < yongtuid.length; j++) {
+          if (sumSelectArray[i].id == yongtuid[j].id) {
+            yongtuid[j].isSelect = false;
           }
         }
-     }
+      }else{
+        for (var j = 0; j < priceId.length; j++) {
+          if (sumSelectArray[i].id == priceId[j].id) {
+            priceId[j].isSelect = false;
+          }
+        }
+      }
+    }
      //更新数据源
     this.setData({
       // 给对象属性赋值的方法
       'filterData[0].array': yongtuid,
       'filterData[1].array':priceId
     });
+    //清空选中的数组
     sumSelectArray=[];
   },
   hiddenFilter:function(){
