@@ -5,55 +5,17 @@
   <view class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}}" bindtap="hiddenFilter" >
   </view>
   <!-- 筛选view -->
-    <view class="animation-element" animation="{{ani}}">
-      <view class='use'>
-        <view class='iconuse'>用途</view>
-        <form>
-          <ul class="useage">
-          <li bindtap="tryDriver" style="background:{{background}};">全部</li>
-          <li>经济实惠型</li>
-          <li>家用学习型</li>
-          </ul>
-          <ul class="useage">
-            <li bindtap="tryDriver" style="background:{{background}};">豪华发烧型</li>
-            <li>疯狂游戏型</li>
-            <li>商务办公型</li>
-          </ul>
-          <ul class="useage">
-            <li>经济实惠型</li>
-            <li>家用学习型</li>
-          </ul>
+    <view class="animation-element" animation="{{ani}}" >
+      <view class='use' wx:for="{{filterData}}" wx:key="{{index}}">
+        <view class='iconuse'>{{item.title}}</view>
+        <form >
+          <view wx:for="{{item.array}}" wx:key="{{index}}">
+            <text class="item {{item.isSelect?'select':'nomal'}}" bindtap="selectItemClick" data-name="{{item}}" id="{{item.id}}">{{item.title}}</text>
+          </view>
         </form>
       </view>
- 
-      <!-- 价格 -->
-      <view class='use'>
-        <view class='iconprice'>价格</view>
- 
-        <ul class="useage">
-          <li bindtap="tryDriver" style="background:{{background}};">全部</li>
-          <li>经济实惠型</li>
-          <li>家用学习型</li>
-        </ul>
- 
- 
-        <ul class="useage">
-          <li bindtap="tryDriver" style="background:{{background}};">豪华发烧型</li>
-          <li>疯狂游戏型</li>
-          <li>商务办公型</li>
-        </ul>
- 
- 
-        <ul class="useage">
- 
-          <li>经济实惠型</li>
-          <li>家用学习型</li>
-        </ul>
- 
-      </view>
- 
       <view class='buttom'>
-      <view class="animation-reset" >重置</view>
+      <view class="animation-reset" bindtap="result">重置</view>
       <view class="animation-button" bindtap="success">完成</view>
      </view>
     

@@ -59,6 +59,7 @@ Page({
   //首页获取热点专题接口
   loadHotTopData:function(){
     var page = this;
+    var user = wx.getStorageSync('user');
     //参数
     var data = {
       "userMobile": "15921488001",
@@ -66,7 +67,7 @@ Page({
       "apiVersion": "1.0.0",
       "version": "6.2.0",
       "pageIndex": 1,
-      "userId": "23087",
+      "userId": user.userId,
       "sign": "BC18D0A1502097D0B94E9CDD36D21499",
       "channel": "1",
       "appKey": API.appKey,
@@ -89,9 +90,10 @@ Page({
   //首页获取产品列表接口
   loadProductData:function(){
     var page = this;
+    var user = wx.getStorageSync('user');
     var data = {
       timeStamp: "2019-11-14T17:04:12+0800",
-      userId: "23087",
+      userId: user.userId,
       sign: "BC18D0A1502097D0B94E9CDD36D21499",
       apiVersion: "1.0.0",
       version: "6.2.0",
@@ -160,6 +162,9 @@ Page({
   },
   filterClick:function(e){
     console.log('筛选按钮被点击');
+    wx.navigateTo({
+      url: '../sift/sift',
+    })
   },
   jumpSearchPage:function(e){
     console.log('跳转搜索页面');

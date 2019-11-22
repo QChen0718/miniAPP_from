@@ -18,10 +18,8 @@
 }
 .iconuse {
   margin-left: 11rpx;
-}
- 
-.iconprice {
-  margin-left: 11rpx;
+  /* 清除浮动 */
+  clear:both;
 }
  
 .animation-element {
@@ -36,21 +34,24 @@
 }
  
  
- 
-.useage {
-  height: 40rpx;
-}
- 
-.useage li {
+.item{
   width: 177rpx;
   margin: 12rpx 7rpx;
   height: 70rpx;
   line-height: 70rpx;
-  display: inline-block;
+  float: left;
   text-align: center;
   border: 1px solid #f3f0f0;
   border-radius: 15rpx;
   font-size: 30rpx;
+}
+.select{
+  background-color: red;
+  color: white;
+}
+.nomal{
+  color: black;
+  background-color: white;
 }
  
 .buttom{

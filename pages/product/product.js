@@ -152,6 +152,7 @@ Page({
     wx.showNavigationBarLoading();
     let end = that.data.categoryData[0].end = true;
     let pageData = this.getCurrentData();
+    var user = wx.getStorageSync('user');
     //开始加载，指示器开始显示加载
     pageData.requesting = true;
     this.setCurrentData(pageData);
@@ -166,7 +167,7 @@ Page({
         "appKey": "ycfiosiplqs93zpd98qjhayrm",
         "userMobile": "18311055781",
         "timeStamp": "2019-11-16T21:30:54+0800",
-        "userId": "1825829",
+        "userId": user.userId,
         "sign": "AA4F114CF4BB89D07C3F6C1FAB4E45F6",
         "apiVersion": e.version
       },
@@ -174,18 +175,25 @@ Page({
       method:e.method,
       
       success:function(data){
-        console.log(data.data);
-        that.setData({
-          newproductData: data.data,
-        });
-        pageData.listData = that.data.newproductData;
+        console.log('fffff',data);
+        if(data.code==0){
+          //成功
+          that.setData({
+            newproductData: data.data,
+          });
+          console.log('产品列表个数', pageData.listData.length);
+          pageData.listData = that.data.newproductData;
+          if (pageData.listData.length === 0) {
+            pageData.emptyShow = true;
+          }
+        }else
+        {
+          wx.showToast({
+            title: data.errMsg,
+          })
+        }
         pageData.end = false;
         pageData.requesting = false;
-        console.log('产品列表个数',pageData.listData.length);
-        if(pageData.listData.length === 0){
-          pageData.emptyShow=true;
-          
-        }
         that.setCurrentData(pageData);
         wx.hideNavigationBarLoading();
       },
